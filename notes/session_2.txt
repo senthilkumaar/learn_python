@@ -1,0 +1,15 @@
+
+3. Mutability
+
+Questions:
+  8. Is string mutable?
+  9. What is the difference between mutable and immutable objects?
+  10. Does concatenating a string creates new object in memory?
+
+
+Everything in python is an object
+  In memory all datatypes are stored as objects
+
+Mutability (Changeable or unchangable)
+  String is immutable - It cannot grow or shrink within itself
+  String concatenation leads to a new string object loaded in memory

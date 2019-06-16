@@ -1,0 +1,79 @@
+Session 1:
+    Basic datatypes:
+        Dynamic typing
+        Strings, Integers and floats
+
+
+    Strings:
+
+	\' - escape character
+	"" - double quoted string
+	"""
+
+	""" - triple quoted string or multiline string
+
+	"\n" - Use of next line character with """ string
+
+
+	String indices:
+		string[0]  - first
+		string[-1] - last
+		string[0:5] - 0 (inclusive), 5 (exclusive)
+		string[ 0 to last but before elem]
+		string[high value] - index error
+
+
+        Slicing
+            - Lists
+            - Strings
+
+        String formatting
+
+
+Session 2:
+    Iterables:
+        Lists, tuples and sets
+            - create, add, remove items
+            - length 
+
+        Difference between list and tuple
+
+        Dictionaries
+            - create, insert, update and delete
+            - ways of traversing
+
+        del keyword
+
+Session 3:
+
+    Conditionals and loops:
+        if
+        if else
+        if elif else
+
+    import statement
+
+    Functions
+
+Session 4:
+    Exception handling:
+        - try, except and finally
+        - Defining custom exception
+
+    File handling
+        - Read and write to file
+
+    Generators and Iterators
+
+Session 5:
+    Database handling in python
+
+Session 6, 7:
+    Classes and objects
+        - instance variables
+        - classmethod, staticmethod and instance methods
+        - inheritance
+
+
+Session 8 - Last:
+    <<<< UI Automation using Selenium Webdriver >>>>

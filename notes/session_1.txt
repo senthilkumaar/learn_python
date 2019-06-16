@@ -1,0 +1,90 @@
+Session Summary:
+    1. Data types
+    2. String Operations
+    3. Mutability
+
+1. Datatypes
+
+Questions:
+1. Is python static typed or dynamically typed? Dynamically typed
+2. What are the data types that python supports?
+
+  Data types are Dynamically typed which means data's type is automatically
+  detected by the interpreter.
+
+  Python has five standard data types −
+    Numbers/Integers
+    String
+    List
+    Tuple
+    Dictionary
+    bool - True or False
+
+2. String Operations
+
+Questions:
+  1. How to replace a particular character in a string with another?
+  2. How do you define a string that contains text like: Programming is not "Geek" stuff...
+  3. How to reverse a string using String slicing
+
+	\  - escape character
+  ""  - double quoted string
+  """
+  """ - triple quoted string or multiline string
+  "\n" - Use of next line character with """ string
+
+Questions:
+
+3. How will you access string using indices [plural of index]:
+   What is the error returned while accessing larger index?
+
+    string[0]  - first element of string
+    string[-1] - last element of string
+    string[0:5] - string[0 to last-1] => 0 (inclusive), 5 (exclusive)
+    string[higher value] - index error
+
+Questions:
+  4. How to search a character exists in a String:
+
+  String search is done using "in" keyword. It checks if the given string
+  in LHS exists in the RHS string
+
+  'world' in 'Hello world'
+  'a' in 'angel'
+  'a' in 'python'
+
+Questions:
+  5. How do you replace a character or word in a string with other?
+  6. List some of the string methods with example.
+
+    text = "Welcome to Python Programming"
+    text.replace('Programming', 'Language')
+    'Welcome to Python Language'
+
+    - replace(<src>, <target>) method - Replaces all occurences
+
+    - capitalize() - capitalizes only the first letter of the sentence
+    - title()      - capitalizes first letter of each word in the sentence
+    - upper()      - capitalizes the entire string
+    - lower()      - lower cases the entire string
+
+Questions:
+  6. How do you concatenate two strings?
+
+  method 1: Using '+' operator
+
+    string1 = string_1 + string_2
+
+  method 2: Using format() method
+    string1 = '{} {}'.format(string_1, string_2)
+
+
+Questions:
+  7. What is string formatting?
+
+     It means filling the contents of the placeholders "{}" using the string's
+     format method
+
+    welcome_msg = 'Welcome {}, good evening!'
+    welcome_msg = 'Welcome {0}, {1}!'
+    welcome_msg = 'Welcome {name}, {message}}!'
