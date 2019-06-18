@@ -1,11 +1,100 @@
+1. if-else-elif
 
+2. for loop 
+    for <var> in <iterable>:
+        <statement(s)>
+    Indented language - Meaning, rather than curly braces, python uses indentation (usually 4 spaces) to create code blocks
+    in keyword
+    
+3. iterables 
+
+    a. String
+    b. List
+    c. Tuples
+    d. Dictionaries
+    e. Sets
+    
+    iterating over string gets each character of a string 
+    iterating over lists, sets, tuples gets each element in the list 
+    
+3.a String
+
+    Question:
+        1. How to iterate over a string "Hello world" and print the contents in same line with one space between each character?
+
+
+3.b List 
+
+    - Lists are used to group together different values or objects
+    
+    - It can be defined using a collection of comma-separated items between square brackets
+    
+    - Example:
+        cubes = [1, 8, 27, 64, 125] # List of squares upto 5 numbers
+    
+    
+    3.b.1 Find the length of the list
+        - len(list) 
+    
+    3.b.2 Search a list:
+        - Searching a list is done using 'in' keyword
+    
+    3.b.3 List slicing 
+    
+        Questions:
+            Using list slicing 
+                1. How to reverse a list?
+                2. How to print the contents of the lists in steps of two?
+                3. Remove first two elements in the below list 
+                   names = ['rajesh', 'arjun', 'murugan', 'vivek']
+                4. Delete the entire list
+    
+        - Like strings lists can be sliced 
+        
+          list[start index: stop index: steps] 
+          
+          cubes[:3] = [1, 8, 27]
+          cubes[:] = [1, 8, 27, 64, 125]
+          cubes[::-1] = [125, 64, 27, 8, 1] # Reverse list 
+    
+    
+    3.b.4 List concatenation
+    
+        Questions:
+            What is the difference between list's append and extend method?
+            
+        - list.append(item)
+        
+            - The usual way of adding item to a list is by using append method
+
+            - We can add one element to end of the list
+                cubes.append(216)
+            
+        - list.extend(item)
+        
+            - Builds the list itself by getting an input list 
+                cubes.extend( [6*6*6, 7*7*7] )
+            
+        - Like strings concatenation can be done using '+' operator
+            cubes = [1, 8, 27, 64, 125] + [216, 343] + [512]
+            
+    3.b.5 range() function 
+
+    3.b.6 Common methods in list:
+        1. append
+        2. extend
+        3. insert(index, item)
+        4. remove(item) - removes first occurence
+        3. clear()
+        6. sort() - in place sorting 
+        7. reverse() - in place reverse
+        
 3. Mutability
 
 Questions:
   8. Is string mutable?
   9. What is the difference between mutable and immutable objects?
   10. Does concatenating a string creates new object in memory?
-
 
 Everything in python is an object
   In memory all datatypes are stored as objects
