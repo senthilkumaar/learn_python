@@ -11,20 +11,22 @@
     a. String
     b. List
     c. Tuples
-    d. Dictionaries
-    e. Sets
+    d. Sets
+    e. Dictionaries
     
     iterating over string gets each character of a string 
     iterating over lists, sets, tuples gets each element in the list 
     
-3.a String
+3.A String
 
     Question:
         1. How to iterate over a string "Hello world" and print the contents in same line with one space between each character?
 
 
-3.b List 
-
+3.B List 
+    
+    - Ordered, changeable, allows duplicates
+    
     - Lists are used to group together different values or objects
     
     - It can be defined using a collection of comma-separated items between square brackets
@@ -33,13 +35,13 @@
         cubes = [1, 8, 27, 64, 125] # List of squares upto 5 numbers
     
     
-    3.b.1 Find the length of the list
+    3.B.1 Find the length of the list
         - len(list) 
     
-    3.b.2 Search a list:
+    3.B.2 Search a list:
         - Searching a list is done using 'in' keyword
     
-    3.b.3 List slicing 
+    3.B.3 List slicing 
     
         Questions:
             Using list slicing 
@@ -58,7 +60,7 @@
           cubes[::-1] = [125, 64, 27, 8, 1] # Reverse list 
     
     
-    3.b.4 List concatenation
+    3.B.4 List concatenation
     
         Questions:
             What is the difference between list's append and extend method?
@@ -72,33 +74,70 @@
             
         - list.extend(item)
         
-            - Builds the list itself by getting an input list 
+            - Grows the list with the given list 
                 cubes.extend( [6*6*6, 7*7*7] )
             
         - Like strings concatenation can be done using '+' operator
             cubes = [1, 8, 27, 64, 125] + [216, 343] + [512]
             
-    3.b.5 range() function 
+    3.B.5 range(n) function 
 
-    3.b.6 Common methods in list:
-        1. append
-        2. extend
-        3. insert(index, item)
-        4. remove(item) - removes first occurence
-        3. clear()
-        6. sort() - in place sorting 
-        7. reverse() - in place reverse
+    3.B.6 Other commonly used methods 
+    
+        - insert(index, item)
+        - remove(item) - removes first occurence
+        - clear()
+        - sort() - in place sorting 
+        - reverse() - in place reverse
+        - count(item) - Since it allows duplicates
+        - index(item) 
         
-3. Mutability
+3.C Tuple 
+    
+    - Ordered, ***Cannot be changed***, Allows duplicates
+    
+    - It is usually created using paranthesis enclosing the items, but can also be created with comma-separated items as well
+    
+    Question:
+        How would you create a tuple with single element?
+        Is it possible to create a tuple using string or a list?
+        
+    
+    Other commonly used methods
+        
+        - count(item) - Since it allows duplicates
+        - index(item)
 
-Questions:
-  8. Is string mutable?
-  9. What is the difference between mutable and immutable objects?
-  10. Does concatenating a string creates new object in memory?
+        
+    Questions:
+        1. What are the difference between a list and a tuple 
+        
+            - Key difference is lists are mutable (changeable) but tuples are immutable (unchangeable)
+            - Cannot replace or modify or delete an element in tuple but you can in a list
+            - Cannot add an element to tuple but we can add element to list.
+            - Cannot sort a tuple but in a list we can sort by calling "list.sort()" method.
+            - Cannot remove an element in tuple but in list we can remove element
+              
+              
+                fruits = ["apples", "bananas", "oranges"]
+                "apples" can be changed to "berries" in fruits list 
+                  
+              
+            - Similarities 
+                Tuples are stored in a single block of memory. Tuples are immutable so, It doesn't require extraspace to store new objects.
+                Lists are allocated in two blocks: the fixed one with all the Python object information and a variable sized block for the data.
+                It is the reason creating a tuple is faster than List.
+                It also explains the slight difference in indexing speed is faster than lists, because in tuples for indexing it follows fewer pointers.
 
-Everything in python is an object
-  In memory all datatypes are stored as objects
+            - Advantages of using tuples:
+                They use less memory where lists use more memory
 
-Mutability (Changeable or unchangable)
-  String is immutable - It cannot grow or shrink within itself
-  String concatenation leads to a new string object loaded in memory
+            - can use tuples in a dictionary as a key but it's not possible with lists                
+            
+            - can access element with an index in both tuples and lists
+                
+            
+        2. t = ([1, 2, 3], "hello", 400)
+        
+           Is it possible to modify the list inside the tuple?
+           
