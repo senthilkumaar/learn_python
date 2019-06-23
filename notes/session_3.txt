@@ -1,0 +1,98 @@
+Summary:
+    1. Dictionary
+        A. Create dictionary
+        B. Check for item existence and error thrown
+        C. Create from list or tuple
+        D. Updating a dictionary
+        E. Delete, Sort and dictionary traversal
+        F. Commonly used dictionary methods
+
+1. Dictionary
+    A. Create dictionary
+
+    Questions:
+      - 1. How to create a simple dictionary?
+          - {'key1': 'value', 'key2': 'value' ... }
+          - dict()
+          - d = {}
+            d[key] = value
+
+      - Is the dictionary ordered?
+
+    - Similar to a real-life dictionary, where words are keys and values are their
+      corresponding meanings.
+
+    - A Python dictionary holds key-value pairs
+
+    - Inide the curly braces { ... }, Separate keys from values with a colon(:),
+      and a pair from another by a comma(,)
+        Example:
+          d = {
+                'PB&J':'Peanut Butter and Jelly',
+                'PJ':'Pajamas'
+              }
+
+    - To create an empty dictionary, simply use curly braces and then assign
+      it to a variable
+
+         - empty_dict = {}
+         - empty_dict = dict()
+
+    - Dictionaries are unordered
+
+    - type(empty_dict) is dict
+
+    Questions:
+      2. How to find if an item exists in a dictionary?
+         - in keyword : It will search in the keys of any dictionary
+
+    Questions:
+
+      3. How do you create a dictionary from list of tuple?
+          - dict() with one argument!
+
+      4. How to access a value from dictionary?
+          - using the Square brackets "dict[key]": Access by key
+          - using the get() method
+
+      assignment:
+        **** What is the difference between square brackets and get method?
+
+      5. What is the error returned while accessing a key that does
+         not exists in a dictionary?
+
+          - KeyError
+
+      6. How to suppress the key error when accessing a element that
+         doesn't exists in a dictionary?
+
+          - Using the get method
+
+      7. How to update the value of an existing element?
+          - Using the square brackets
+          - if the key doesn't already exists, then the item will be created
+
+      8. How to delete a dictionary
+          a. Complete dictionary : del keyword
+          b. specific key-value pair: del with square brackets
+
+      9. How to sort a dictionary?
+         - sorted(dict) - Based upon keys and returns sorted keys list
+         - if types of key is different, then TypeError: unorderable types: str() < int()
+
+      10. Mention some commonly used dictionary functions
+
+         - dict.keys()    - Returns list of keys
+         - dict.values()  - Returns list of values
+         - dict.items()   - Returns list of tuples of key-value pairs
+         - dict.get(key)  - Returns the
+         - dict.update(dict) - Updates a dictionary to the existing dictionary
+         - dict.clear()   - Unlike del keyword, the "empty" variable remains in memory
+         - dict.pop(key)  - Fetches the value and removes the item from the dictionary
+         - dict.popitem() - Fetches and removes the first item in dictionary
+
+      9. How to traverse a dictionary?
+         - dict
+         - dict.items()
+
+      10. How to create and access a nested dictionary?

@@ -1,3 +1,14 @@
+Summary:
+  1. if - else
+     if - elif - else (nested if else)
+
+  2. for loop
+
+  3. Iterables
+      A. String traversal
+      B. List
+      C. Tuple
+
 1. if-else-elif
 
 Syntax:
@@ -29,11 +40,11 @@ Indented language:
   - Iterables are datatypes which has sequence of elements
   - strings, numbers and tuples are immutable datatypes
   - List of iterables in python:
-      a. String
-      b. List
-      c. Tuples
-      d. Sets
-      e. Dictionaries
+      a. String ''
+      b. List [i1,]
+      c. Tuples (i1,)
+      d. Sets  {i1, i2, ...}
+      e. Dictionaries {k:v, }
 
   - Iterating over string fetches each character of a string
   - Iterating over lists, sets, tuples fetches each element in the list
