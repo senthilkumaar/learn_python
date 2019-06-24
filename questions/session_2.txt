@@ -17,12 +17,12 @@ Session 2 and 3 practice questions
     4. Print the size of the list
     5. lowercase the first element 
 
-6. Sort the list in-place. The list must now look like: [D, a, b, c] 
+6. Sort the list in-place. The list must now look like: [a, b, c, d] 
 
 7. Use list slicing to remove the last element in the list "alpha_list". The list must look like [a, b, c]
    Hint: list[:-1].
    
-8. Now add the letters d, e, f, g, h towards the end of the list alpha_list
+8. Now add the letters d, e, f, g, h towards the end of the list alpha_list. (list.extend())
 
 9. Use for loop to loop through numbers from 0 to 100 and print its cubes only if the cubed value is divisible by 5 in the same line separated by single space
    
