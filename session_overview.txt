@@ -1,79 +1,51 @@
 Session 1:
-    Basic datatypes:
-        Dynamic typing
-        Strings, Integers and floats
-
-
-    Strings:
-
-	\' - escape character
-	"" - double quoted string
-	"""
-
-	""" - triple quoted string or multiline string
-
-	"\n" - Use of next line character with """ string
-
-
-	String indices:
-		string[0]  - first
-		string[-1] - last
-		string[0:5] - 0 (inclusive), 5 (exclusive)
-		string[ 0 to last but before elem]
-		string[high value] - index error
-
-
-        Slicing
-            - Lists
-            - Strings
-
-        String formatting
-
+    1. Data types
+    2. String Operations
+    3. Mutability
 
 Session 2:
-    Iterables:
-        Lists, tuples and sets
-            - create, add, remove items
-            - length 
-
-        Difference between list and tuple
-
-        Dictionaries
-            - create, insert, update and delete
-            - ways of traversing
-
-        del keyword
+  1. if - else
+     if - elif - else (nested if else)
+  2. for loop
+  3. Iterables
+      A. String traversal
+      B. List
+      C. Tuple
 
 Session 3:
-
-    Conditionals and loops:
-        if
-        if else
-        if elif else
-
-    import statement
-
-    Functions
+  1. Dictionary
+      - Create, item existence
+      - Create from list or tuple
+      - Update, Delete, Sort andtraversal
+      - Commonly used dictionary methods
 
 Session 4:
-    Exception handling:
-        - try, except and finally
-        - Defining custom exception
-
-    File handling
-        - Read and write to file
-
-    Generators and Iterators
+    - Functions
+        - Defining Functions (without and with args)
+        - *args
+        - **kwargs
+        - lambda functions
+    - The "import" statement
+    - Exception handling:
+      - try, except and finally
+      - Defining custom exception
 
 Session 5:
-    Database handling in python
+    - Generators
+    - Iterators
+    - File handling
+      - Create, Read and write file
 
-Session 6, 7:
-    Classes and objects
-        - instance variables
-        - classmethod, staticmethod and instance methods
-        - inheritance
+Session 6:
+    - Classes and objects
+      - instance variables
+      - classmethod, staticmethod and instance methods
+      - inheritance
 
+Remaining Sessions:
+     UI Automation using Selenium Webdriver
 
-Session 8 - Last:
-    <<<< UI Automation using Selenium Webdriver >>>>
+Last Sessions:
+  - common built-in functions
+  - collections
+  - database handling
