@@ -35,14 +35,21 @@ a. How to define a function
         def <function name> (parameters) :
             <statements>                    # statements must be indented
 
+def area_of_circle(r):
+    return 3.14 * r ** 2
+
 b. default argument with values
 
-c. functions with formal arguments, *args, **kwargs
+def area_of_circle(radius=0):
+    return 3.14 * r ** 2
+
+c. functions with mandatory arguments, *args, **kwargs
+
     Python allows us to define four types of arguments for a function:
 
     1. Mandatory arguments (or formal arguments)
         - Regular aguments to a function
-
+        
         - Syntax:
           def function_name(arg_1, arg_2):
               <statements>
@@ -52,22 +59,28 @@ c. functions with formal arguments, *args, **kwargs
 def add(num_1, num_2):
     return num_1 + num_2
 
+# default arguments 
+def add(num_1=0, num_2=0):
+    return num_1 + num_2
+
     2. *args: Variable number of arguments
       - A function can be called with an arbitrary number of arguments
       - These arguments will be wrapped up in a tuple
       - Before the variable number of arguments, zero or more normal arguments may occur.
 
-def add(*args):
+def add(*args):   # variable no. of args, it can also be any name, say *numbers, *nos etc.
     total = 0
     for arg in args:
         total = total + arg
     return total
 
+
 print(add(1, 2))
 print(add(1, 2, 3))
 print(add(1, 2, 3, 4))
 
-    3. Variable number of keyword arguments (or named arguments) using **kwargs, for example
+
+    3. Variable number of keyword arguments (or arguments with name) using **kwargs, for example
       - All keyword arguments are stored in a dictionary
       - They can be accessed in a similar fashion how a dictionary is accessed
       - To pass in a keyword argument, the arguments are passed as below
@@ -77,24 +90,21 @@ def person_info(**data):
     for key, value in data.items():   # Accessing the
         print("{} is {}".format(key,value))
 
+
 person_info(firstname="John", lastname="Wood", email="johnwood@nomail.com", country="Wakanda", age=25, phone=9876543210)
+
 
     4. All the above three used in a single function
 
         - Pseudocode:
           def func(mandatory_arg, *args, **kwargs):
-              # mandatory_arg is a positional-only parameter
-              print mandatory_arg
+              print mandatory_arg   # mandatory_arg is a positional-only parameter
 
-              # args is a tuple of positional arguments,
-              # because the parameter name has * prepended
-              if args:
-                  print args
+              if args:              # Optional - 0 or more args
+                  print args        # args is a tuple of positional arguments
 
-              # kwargs is a dictionary of keyword arguments,
-              # because the parameter name has ** prepended
-              if kwargs: # If kwargs is not empty
-                  print kwargs
+              if kwargs:            # optional - 0 or more keyword args 
+                  print kwargs      # kwargs is a dictionary of keyword arguments
 
 # Example:
 def show_address(name, street_name, *area_details, **city_details):
@@ -107,6 +117,7 @@ def show_address(name, street_name, *area_details, **city_details):
         address = address + "    {}: {}".format(detail_key, detail_value)
 
     print(address)
+
 
 show_address('20, john street')   # Error
 show_address('Robert', '20, john street')
@@ -195,13 +206,24 @@ Questions:
           <function name> = lambda x [,y] [,z]: <expression>                # note: there is no return keyword
 
 # Lambda basics
-adder = lambda a : a + 10   # one argument
-print(adder(5))
+def area_of_circle(r):
+    return 3.14 * r ** 2
 
-mail_id = lambda f_name, l_name, c_name: '{}.{}@{}.com'.format(f_name, l_name, c_name)
+# The above function is technically equivalent to below lambda function
+
+area = lambda r: 3.14 * r ** 2  
+
+
+mail_id = lambda f_name, l_name, company: '{}.{}@{}.com'.format(f_name, l_name, company)
+
 print(mail_id('john', 'doe', 'company'))
 print(mail_id('swadhikar', 'c', 'cisco'))
 
+
+# The above lambda function is technically equivalent to 
+def mail_id(f_name, l_name, company):
+    return '{}.{}@{}.com'.format(f_name, l_name, company)
+    
 
 # Simple examples
 average = lambda l: sum(l) / len(l) # calculate average of numbers in a list
@@ -228,27 +250,30 @@ sorted(people_count_dict)   # sorts company names in alphabetical order
 sorted(people_count_dict.items(), key=lambda x: x[1])
 sorted(people_count_dict.items(), key=lambda x: x[1], reverse=True)
 
-# sorted function demystified
-def print_second_item_on_tuple(t):
-    print(t[1])
+second_item = lambda t: t[1]
 
-print_second_item_on_tuple( ('1', 'one')  )
-# one
+def second_item_def(t):
+    return t[1]
 
-second_item = lambda x: x[1]
-print(second_item( (0, 1)  ))
-# 1
+# sorted() -> returns list
+# print(people_count_dict)
+# sorted_by_val = sorted(people_count_dict.items(), key=second_item)
+sorted_by_val = sorted(people_count_dict.items(), key=second_item_def, reverse=True)
+print(sorted_by_val)
 
-print(second_item( ('x', 'y')  ))
-# 'y'
 
-d = {'a': 'apple', 'b': 'ball', 'c': 'cat'}
+# Find the company with highest employees
 
-print(sorted(d.items()))
-# [('a', 'apple'), ('b', 'ball'), ('c', 'cat')]
+def get_first_in_tuple(t):
+   return t[0]
 
-print(sorted(d.items(), key=lambda x: x[1]))
-# [('a', 'apple'), ('b', 'ball'), ('c', 'cat')]
+print(people_count_dict.items())
 
-print(sorted(d.items(), key=lambda x: x[1], reverse=True))
-# [('c', 'cat'), ('b', 'ball'), ('a', 'apple')]
+key_list = []
+
+for item in list(people_count_dict.items()):
+   key_list.append(second_item(item))
+
+print(key_list)
+key_list.sort()
+print(key_list)
