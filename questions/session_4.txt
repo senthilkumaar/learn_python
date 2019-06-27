@@ -1,0 +1,51 @@
+1. What Is The Output Of The Following Code Snippet?
+
+num = 1
+
+def func():
+    global num
+    num = num + 3
+    print(num)
+
+func()
+print(num)
+
+
+2. What Is The Output Of The Following Code Snippet?
+    raise_to_power = lambda num, power: num ** power
+
+
+3. What Is The Output Of The Following Code Snippet?
+
+myList = [
+    lambda x: x ** 2,
+    lambda x: x ** 3,
+    lambda x: x ** 4
+]
+
+for f in myList:
+   print(f(3))
+
+The default value is evaluated only once. This makes a difference when the default is a mutable object such as a list, dictionary, or instances of most classes. For example, the following function accumulates the arguments passed to it on subsequent calls:
+
+
+def f(a, L=[]):
+    L.append(a)
+    return L
+
+
+print(f(1))
+print(f(2))
+print(f(3))
+
+
+def f(a, L=[]):
+    L.append(a)
+    return L
+
+
+def f(a, L=None):
+    if L is None:
+        L = []
+    L.append(a)
+    return L

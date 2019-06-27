@@ -14,33 +14,35 @@ Session 2:
 
 Session 3:
   1. Dictionary
-      - Create, item existence
-      - Create from list or tuple
-      - Update, Delete, Sort andtraversal
-      - Commonly used dictionary methods
+    - Create, item existence
+    - Create from list or tuple
+    - Update, Delete, Sort andtraversal
+    - Commonly used dictionary methods
 
 Session 4:
-    - Functions
-        - Defining Functions (without and with args)
-        - *args
-        - **kwargs
-        - lambda functions
-    - The "import" statement
-    - Exception handling:
-      - try, except and finally
-      - Defining custom exception
+  1. Functions
+    a. Defining Functions
+    b. Default argument
+    c. 3 types of functions with:
+      - mandatory argss
+      - *args
+      - **kwargs
+  2. Exception handling:
+    - try, except and finally
+    - Defining custom exception
+  3. lambda functions
 
 Session 5:
-    - Generators
-    - Iterators
-    - File handling
-      - Create, Read and write file
+  1. Generators
+  2. Iterators
+  3. File handling
+    - Create, Read and write file
 
 Session 6:
-    - Classes and objects
-      - instance variables
-      - classmethod, staticmethod and instance methods
-      - inheritance
+  1. Classes and objects
+    - instance variables
+    - classmethod, staticmethod and instance methods
+    - inheritance
 
 Remaining Sessions:
      UI Automation using Selenium Webdriver

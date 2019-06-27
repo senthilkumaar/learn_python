@@ -1,0 +1,254 @@
+Summary:
+  1. Functions
+      a. Function definition
+      b. Functions with default arguments
+      c. Functions with
+          1. mandatory arguments
+          2. *args - variable number of args
+          3. **kwargs - keyword arguments
+          4. mandatory, *args and **kwargs
+      d. Setting docstring
+
+  2. Exception Handling
+      a. Syntax errors vs Exceptions
+      b. Raising an exception
+      c. AssertionError
+      d. try-except[-else]-finally
+      e. Custom Exceptions
+
+  3. Lambda Functions
+      a. lambda function definition
+      b. Simple example
+      c. Sorting dictionary by value
+
+
+1. Functions
+
+Questions:
+    1. What Is The Default Return Value For A Function That Does Not Return Any Value Explicitly?
+    2. What is the type of *args and **kwargs?
+    3. Is python functions pass by value or pass by reference?
+    4. How to define a doc string inside a function?
+
+a. How to define a function
+    Syntax:
+        def <function name> (parameters) :
+            <statements>                    # statements must be indented
+
+b. default argument with values
+
+c. functions with formal arguments, *args, **kwargs
+    Python allows us to define four types of arguments for a function:
+
+    1. Mandatory arguments (or formal arguments)
+        - Regular aguments to a function
+
+        - Syntax:
+          def function_name(arg_1, arg_2):
+              <statements>
+              ...
+              return <return_value>   # optional
+
+def add(num_1, num_2):
+    return num_1 + num_2
+
+    2. *args: Variable number of arguments
+      - A function can be called with an arbitrary number of arguments
+      - These arguments will be wrapped up in a tuple
+      - Before the variable number of arguments, zero or more normal arguments may occur.
+
+def add(*args):
+    total = 0
+    for arg in args:
+        total = total + arg
+    return total
+
+print(add(1, 2))
+print(add(1, 2, 3))
+print(add(1, 2, 3, 4))
+
+    3. Variable number of keyword arguments (or named arguments) using **kwargs, for example
+      - All keyword arguments are stored in a dictionary
+      - They can be accessed in a similar fashion how a dictionary is accessed
+      - To pass in a keyword argument, the arguments are passed as below
+
+def person_info(**data):
+    print("\nData type of argument:", type(data))
+    for key, value in data.items():   # Accessing the
+        print("{} is {}".format(key,value))
+
+person_info(firstname="John", lastname="Wood", email="johnwood@nomail.com", country="Wakanda", age=25, phone=9876543210)
+
+    4. All the above three used in a single function
+
+        - Pseudocode:
+          def func(mandatory_arg, *args, **kwargs):
+              # mandatory_arg is a positional-only parameter
+              print mandatory_arg
+
+              # args is a tuple of positional arguments,
+              # because the parameter name has * prepended
+              if args:
+                  print args
+
+              # kwargs is a dictionary of keyword arguments,
+              # because the parameter name has ** prepended
+              if kwargs: # If kwargs is not empty
+                  print kwargs
+
+# Example:
+def show_address(name, street_name, *area_details, **city_details):
+    address = "To,\n    {},\n    {}\n".format(name, street_name)
+
+    for area_detail in area_details:
+        address = address + "    {}\n".format(area_detail)
+
+    for detail_key, detail_value in city_details.items():
+        address = address + "    {}: {}".format(detail_key, detail_value)
+
+    print(address)
+
+show_address('20, john street')   # Error
+show_address('Robert', '20, john street')
+show_address('Robert', '20, john street', '5th Main Road')
+show_address('Robert', '20, john street', '5th Main Road', 'Landmark: (Opposite to play ground)')
+show_address('Robert', '20, john street', '5th Main Road', 'Landmark: (Opposite to play ground)', city='Chennai', pincode=600015)
+
+    Note:
+      - When we define a function arguments, the order should be formal arguments followed by *args and **kwargs
+          def test_function(mandatory_arg_1, mandatory_arg_2, ..., *args, **kwargs):
+              <statements>
+      - It’s not mandatory to use the names args and kwargs
+      - The args variable is of type tuple. We can pass a tuple as a function argument to map with args.
+      - The kwargs variable is of type dict. So we can pass a dictionary as an argument to map with kwargs.
+
+  d. Setting docstring
+      - Describes the function in detail
+      - Can be used with help() and dir()
+
+def adder(num_1, num_2):
+    """
+        Function name : adder
+        Purpose       : Calculate sum of two numbers
+        arguments     : num_1 (integer), num_2 (integer)
+        return        : sum_value (integer)
+    """
+    return num_1 + num_2
+
+print(adder.__doc__)
+
+2. Exception Handling
+    a. Syntax errors vs Exceptions
+        - Syntax error occurs when code is syntactically incorrect
+        - Exceptions arises when syntactically correct code results in an error
+
+    b. Raising an exception
+        - "raise" keyword
+        - we can forcefully raise an exception similar to the way that python raises
+
+    c. AssertionError
+        - Instead of waiting for a program to crash in between, we can also check for a condition
+          using "assert" keyword
+        - In addition to conditional check, the "assert" statement raises an "AssertionError" if
+          the condition is not met
+        - Syntax:
+            assert <condition> [, error message]
+
+assert 0 < 2
+assert 0 > 2
+assert 0 > 2, "Zero can never be greater than 2"
+
+word_count_dict = {'welcome': 2, 'harry': 3, 'optimum': 0}
+word_count_dict['hello']  # KeyError
+
+assert 'hello' in word_count_dict, '"hello" does not exists in dictionary'   # AssertionError
+
+assert 'welcome' in word_count_dict
+print('the word "welcome" is found "{}" times'.format(word_count_dict['welcome']))
+
+    d. try-except[-else][-finally]
+
+       Syntax and Usage:
+         try:
+            # run this code which may throw exception
+         except [ExceptionType]:
+            # execute this code when an exception occurs
+         [else:]      # optional
+            # execute this code when exception is not thrown
+         [finally:]   # optional
+            # perform all clean-ups here
+
+    e. Custom Exceptions
+
+2. lambda functions
+
+Questions:
+    Write a lambda function that doubles and returns any number (data-type) passed to it
+    How will you sort a dictionary by its value? (and return as list of tuples)
+    How will you sort a dictionary by its value in reverse order? (and return as list of tuples)
+
+   Lambda Expressions
+      - Lambda functions can be used wherever function objects are required
+      - They are restricted to a single expression
+
+      Syntax:
+          <function name> = lambda x [,y] [,z]: <expression>                # note: there is no return keyword
+
+# Lambda basics
+adder = lambda a : a + 10   # one argument
+print(adder(5))
+
+mail_id = lambda f_name, l_name, c_name: '{}.{}@{}.com'.format(f_name, l_name, c_name)
+print(mail_id('john', 'doe', 'company'))
+print(mail_id('swadhikar', 'c', 'cisco'))
+
+
+# Simple examples
+average = lambda l: sum(l) / len(l) # calculate average of numbers in a list
+average([10, 10, 10, 10])
+average([1, 2, 3, 4])
+
+# Sort dictionary by value
+people_count_dict = {
+    'hcl': 1000,
+    'tcs': 1200,
+    'cts': 650,
+    'wipro': 700
+}
+
+# Normal sorting
+sorted(people_count_dict)   # sorts company names in alphabetical order
+
+# To sort by values
+# 1. Use sorted() function on dict.items() -> list of tuples [(a, b), (c, d), ...]
+# 2. Pass the keyword argument 'key' as the lambda function.
+     lambda x: x[1]
+
+
+sorted(people_count_dict.items(), key=lambda x: x[1])
+sorted(people_count_dict.items(), key=lambda x: x[1], reverse=True)
+
+# sorted function demystified
+def print_second_item_on_tuple(t):
+    print(t[1])
+
+print_second_item_on_tuple( ('1', 'one')  )
+# one
+
+second_item = lambda x: x[1]
+print(second_item( (0, 1)  ))
+# 1
+
+print(second_item( ('x', 'y')  ))
+# 'y'
+
+d = {'a': 'apple', 'b': 'ball', 'c': 'cat'}
+
+print(sorted(d.items()))
+# [('a', 'apple'), ('b', 'ball'), ('c', 'cat')]
+
+print(sorted(d.items(), key=lambda x: x[1]))
+# [('a', 'apple'), ('b', 'ball'), ('c', 'cat')]
+
+print(sorted(d.items(), key=lambda x: x[1], reverse=True))
+# [('c', 'cat'), ('b', 'ball'), ('a', 'apple')]
