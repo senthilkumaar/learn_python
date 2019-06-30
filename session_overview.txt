@@ -30,24 +30,28 @@ Session 4:
   2. Exception handling:
     - try, except and finally
     - Defining custom exception
-  3. lambda functions
 
-Session 5:
-  1. Generators
-  2. Iterators
-  3. File handling
-    - Create, Read and write file
+Session 5
+  Lambda functions
+  Comprehensions
 
 Session 6:
+  1. Generators
+  2. File handling
+    - Create, Read and write file
+
+Session 7:
   1. Classes and objects
     - instance variables
     - classmethod, staticmethod and instance methods
     - inheritance
 
 Remaining Sessions:
-     UI Automation using Selenium Webdriver
+  - UI Automation using Selenium Webdriver
 
 Last Sessions:
   - common built-in functions
   - collections
   - database handling
+  - Decorator
+  - Iterator
