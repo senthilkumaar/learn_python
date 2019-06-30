@@ -8,6 +8,7 @@ Summary:
           3. **kwargs - keyword arguments
           4. mandatory, *args and **kwargs
       d. Setting docstring
+      e. Callback function
 
   2. Exception Handling
       a. Syntax errors vs Exceptions
@@ -35,147 +36,138 @@ a. How to define a function
         def <function name> (parameters) :
             <statements>                    # statements must be indented
 
-def area_of_circle(r):
-    return 3.14 * r ** 2
 
-b. default argument with values
+b. default arguments
+    def <function name> (mandatory_arg, default_arg_1=default_val_1, default_arg_2=default_val_2) :
+        <statements>                    # statements must be indented
 
-def area_of_circle(radius=0):
-    return 3.14 * r ** 2
 
 c. functions with mandatory arguments, *args, **kwargs
-
     Python allows us to define four types of arguments for a function:
 
     1. Mandatory arguments (or formal arguments)
-        - Regular aguments to a function
-        
+        - Required aguments to a function
+        - Should be the starting arguments when defining functions
         - Syntax:
+
           def function_name(arg_1, arg_2):
               <statements>
               ...
-              return <return_value>   # optional
+              return <return_value>   # return statement is optional
 
-def add(num_1, num_2):
-    return num_1 + num_2
+          Argument unpacking mechanism:
 
-# default arguments 
-def add(num_1=0, num_2=0):
-    return num_1 + num_2
+            >>> i1, *i2 = (10, 20, 30, 40, 50, 60)    # unpacking tuple
+            >>> i2
+            [20, 30, 40, 50, 60]    # unpacking creates list!
+            >>> type(i2)
+            <class 'list'>
+            >>> i1, *i2 = 10, 20, 30, 40, 50, 60      # unpacking tuple
+            >>> i2
+            [20, 30, 40, 50, 60]
+            >>>
+            >>> a, *rem = 1, 2, 3, 4, 5
+            >>> rem
+            [2, 3, 4, 5]
+            >>>
+            >>> start, *middle, end = 1, 2, 3, 4, 5
+            >>> start
+            1
+            >>> middle
+            [2, 3, 4]
+            >>> end
+            5
 
     2. *args: Variable number of arguments
-      - A function can be called with an arbitrary number of arguments
-      - These arguments will be wrapped up in a tuple
-      - Before the variable number of arguments, zero or more normal arguments may occur.
+          - A function can be called with an arbitrary number of arguments (0 or more)
+          - These arguments will be wrapped up in a tuple
+          - Before the variable number of arguments, zero or more normal arguments may occur.
 
-def add(*args):   # variable no. of args, it can also be any name, say *numbers, *nos etc.
-    total = 0
-    for arg in args:
-        total = total + arg
-    return total
-
-
-print(add(1, 2))
-print(add(1, 2, 3))
-print(add(1, 2, 3, 4))
-
-
-    3. Variable number of keyword arguments (or arguments with name) using **kwargs, for example
-      - All keyword arguments are stored in a dictionary
-      - They can be accessed in a similar fashion how a dictionary is accessed
-      - To pass in a keyword argument, the arguments are passed as below
-
-def person_info(**data):
-    print("\nData type of argument:", type(data))
-    for key, value in data.items():   # Accessing the
-        print("{} is {}".format(key,value))
-
-
-person_info(firstname="John", lastname="Wood", email="johnwood@nomail.com", country="Wakanda", age=25, phone=9876543210)
-
+    3. **kwargs: Variable number of keyword arguments (or named arguments) using **kwargs, for example
+        - All keyword arguments are stored in a dictionary
+        - They can be accessed in a similar fashion how a dictionary is accessed
+        - To pass in a keyword argument, the arguments are passed as below
 
     4. All the above three used in a single function
 
-        - Pseudocode:
+       Pseudocode:
           def func(mandatory_arg, *args, **kwargs):
-              print mandatory_arg   # mandatory_arg is a positional-only parameter
+              print mandatory_arg     # mandatory_arg
+              if args:
+                  print args          # args is a tuple of positional arguments,
+              if kwargs: # If kwargs is not empty   # kwargs is a dictionary of keyword arguments,
+                  print kwargs
 
-              if args:              # Optional - 0 or more args
-                  print args        # args is a tuple of positional arguments
-
-              if kwargs:            # optional - 0 or more keyword args 
-                  print kwargs      # kwargs is a dictionary of keyword arguments
-
-# Example:
-def show_address(name, street_name, *area_details, **city_details):
-    address = "To,\n    {},\n    {}\n".format(name, street_name)
-
-    for area_detail in area_details:
-        address = address + "    {}\n".format(area_detail)
-
-    for detail_key, detail_value in city_details.items():
-        address = address + "    {}: {}".format(detail_key, detail_value)
-
-    print(address)
-
-
-show_address('20, john street')   # Error
-show_address('Robert', '20, john street')
-show_address('Robert', '20, john street', '5th Main Road')
-show_address('Robert', '20, john street', '5th Main Road', 'Landmark: (Opposite to play ground)')
-show_address('Robert', '20, john street', '5th Main Road', 'Landmark: (Opposite to play ground)', city='Chennai', pincode=600015)
 
     Note:
       - When we define a function arguments, the order should be formal arguments followed by *args and **kwargs
-          def test_function(mandatory_arg_1, mandatory_arg_2, ..., *args, **kwargs):
-              <statements>
-      - It’s not mandatory to use the names args and kwargs
+            def test_function(mandatory_arg_1, mandatory_arg_2, ..., *args, **kwargs):
+                <statements>
+      - It’s not mandatory to use the names 'args' and kwargs
       - The args variable is of type tuple. We can pass a tuple as a function argument to map with args.
-      - The kwargs variable is of type dict. So we can pass a dictionary as an argument to map with kwargs.
+      - The kwargs variable is of type dict
 
   d. Setting docstring
       - Describes the function in detail
       - Can be used with help() and dir()
 
-def adder(num_1, num_2):
-    """
-        Function name : adder
-        Purpose       : Calculate sum of two numbers
-        arguments     : num_1 (integer), num_2 (integer)
-        return        : sum_value (integer)
-    """
-    return num_1 + num_2
+      Example:
 
-print(adder.__doc__)
+      def adder(num_1, num_2):
+          """
+              Function name : adder
+              Purpose       : Calculate sum of two numbers
+              arguments     : num_1 (integer), num_2 (integer)
+              return        : sum_value (integer)
+          """
+          return num_1 + num_2
+
+      print(adder.__doc__)
 
 2. Exception Handling
-    a. Syntax errors vs Exceptions
+
+    Questions:
+        1. How does "assert" statement works? When do you use it?
+        2. How to throw exception intentionally?
+        3. What is the difference between Syntax Error and Exception?
+        4. How do you throw a custom exception?
+
+
+    a. AssertionError
+      - Instead of waiting for a program to crash in between, we can also check for a condition
+        using "assert" keyword
+      - In addition to conditional check, the "assert" statement raises an "AssertionError" if
+        the condition is not met
+      - Syntax:
+          assert <condition> [, error message]
+      - Example
+          assert text.startswith('ip address'), 'Text must start with an ip address'   # str.endswith()
+
+    b. Syntax errors vs Exceptions
         - Syntax error occurs when code is syntactically incorrect
         - Exceptions arises when syntactically correct code results in an error
+        - Few common exceptions:
 
-    b. Raising an exception
+            NameError - accessing a variable before defining
+            >>> a = 10
+            >>>
+            >>> if a > 3:pe
+            ...    pass
+
+            KeyError - accessing a dict key which dont exist
+                >>> d = {}
+                >>>
+                >>> d['a']
+                Traceback (most recent call last):
+                  File "<stdin>", line 1, in <module>
+                KeyError: 'a'
+
+        How to suppress KeyError?
+        dict.get(inexistent_variable) -> returns None
+
+    c. Raising an exception
         - "raise" keyword
         - we can forcefully raise an exception similar to the way that python raises
-
-    c. AssertionError
-        - Instead of waiting for a program to crash in between, we can also check for a condition
-          using "assert" keyword
-        - In addition to conditional check, the "assert" statement raises an "AssertionError" if
-          the condition is not met
-        - Syntax:
-            assert <condition> [, error message]
-
-assert 0 < 2
-assert 0 > 2
-assert 0 > 2, "Zero can never be greater than 2"
-
-word_count_dict = {'welcome': 2, 'harry': 3, 'optimum': 0}
-word_count_dict['hello']  # KeyError
-
-assert 'hello' in word_count_dict, '"hello" does not exists in dictionary'   # AssertionError
-
-assert 'welcome' in word_count_dict
-print('the word "welcome" is found "{}" times'.format(word_count_dict['welcome']))
 
     d. try-except[-else][-finally]
 
@@ -190,90 +182,3 @@ print('the word "welcome" is found "{}" times'.format(word_count_dict['welcome']
             # perform all clean-ups here
 
     e. Custom Exceptions
-
-2. lambda functions
-
-Questions:
-    Write a lambda function that doubles and returns any number (data-type) passed to it
-    How will you sort a dictionary by its value? (and return as list of tuples)
-    How will you sort a dictionary by its value in reverse order? (and return as list of tuples)
-
-   Lambda Expressions
-      - Lambda functions can be used wherever function objects are required
-      - They are restricted to a single expression
-
-      Syntax:
-          <function name> = lambda x [,y] [,z]: <expression>                # note: there is no return keyword
-
-# Lambda basics
-def area_of_circle(r):
-    return 3.14 * r ** 2
-
-# The above function is technically equivalent to below lambda function
-
-area = lambda r: 3.14 * r ** 2  
-
-
-mail_id = lambda f_name, l_name, company: '{}.{}@{}.com'.format(f_name, l_name, company)
-
-print(mail_id('john', 'doe', 'company'))
-print(mail_id('swadhikar', 'c', 'cisco'))
-
-
-# The above lambda function is technically equivalent to 
-def mail_id(f_name, l_name, company):
-    return '{}.{}@{}.com'.format(f_name, l_name, company)
-    
-
-# Simple examples
-average = lambda l: sum(l) / len(l) # calculate average of numbers in a list
-average([10, 10, 10, 10])
-average([1, 2, 3, 4])
-
-# Sort dictionary by value
-people_count_dict = {
-    'hcl': 1000,
-    'tcs': 1200,
-    'cts': 650,
-    'wipro': 700
-}
-
-# Normal sorting
-sorted(people_count_dict)   # sorts company names in alphabetical order
-
-# To sort by values
-# 1. Use sorted() function on dict.items() -> list of tuples [(a, b), (c, d), ...]
-# 2. Pass the keyword argument 'key' as the lambda function.
-     lambda x: x[1]
-
-
-sorted(people_count_dict.items(), key=lambda x: x[1])
-sorted(people_count_dict.items(), key=lambda x: x[1], reverse=True)
-
-second_item = lambda t: t[1]
-
-def second_item_def(t):
-    return t[1]
-
-# sorted() -> returns list
-# print(people_count_dict)
-# sorted_by_val = sorted(people_count_dict.items(), key=second_item)
-sorted_by_val = sorted(people_count_dict.items(), key=second_item_def, reverse=True)
-print(sorted_by_val)
-
-
-# Find the company with highest employees
-
-def get_first_in_tuple(t):
-   return t[0]
-
-print(people_count_dict.items())
-
-key_list = []
-
-for item in list(people_count_dict.items()):
-   key_list.append(second_item(item))
-
-print(key_list)
-key_list.sort()
-print(key_list)
