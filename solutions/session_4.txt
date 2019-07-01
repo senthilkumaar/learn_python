@@ -1,0 +1,260 @@
+1. Write a basic python function "greet_msg" with 1 argument. This function should:
+    a. contain a docstring with description "Prints any given string"
+    b. print the greeting message in format: Hello, Good <greeting message
+
+def greet_msg(message):
+   """This prints a passed string into this function"""
+   print "Hello, Good" + message
+
+greet_msg('')
+
+
+Note: Pass by Value - For immutable objects such as the strings, integers and tuples
+Note: Pass by Reference - For all mutable args (list, dict)
+
+2. Write a function modify_list that takes in a list as argument and appends a new item to the list.
+   The original passed to the function as argument must be changed outside the function.
+
+def modify_list(list_arg):
+   """This changes a passed list into this function"""
+   list_arg.append([1,2,3,4]);
+   print("Values inside the function: ", list_arg)
+
+
+# Now you can call modify_list function
+in_list = [10,20,30]
+modify_list(in_list)
+print "Values outside the function: ", in_list
+
+
+3. Write a function that takes in any list and prints it's contents in same line separated
+   by a single space. Hint: print function's end parameter must be a single space 
+
+SINGLE_SPACE = ' '
+
+def print_iterable(iterable):
+  for item in iterable:
+    print(item, end=SINGLE_SPACE)
+
+4. Write a function 'square_root' that takes a single argument and returns the square root of the 
+   number passed in. 
+   Hint: - Square root of a number is number with power 0.5 Example: 4^0.5 = 2.
+         - Use "return" keyword to return the calculated value 
+
+def square_root(x):
+    return x ** 0.5
+
+square_root(4)
+2.0
+square_root(9)
+3.0
+
+5. Write a function show_player_info that takes two arguments. Calling this method 
+   should display the player details in below format. 
+
+    a. list_of_players: list data type 
+    b. country:         default argument with default value 'India'
+
+    Output Format:
+    Sample data: ['rohit', 'rahul', 'kohli', 'pant', 'dhoni']
+    Team India
+        rohit
+        rahul
+        kohli
+        pant
+        dhoni
+
+
+Solution:
+
+def show_player_info(players, country="India"):
+    print('Team {}'.format(country.capitalize())) # capitalize method upper cases the first letter of string 
+    for player in players:
+        print('    ' + player)
+
+>>>
+team_india = ['rohit', 'rahul', 'kohli', 'pant', 'dhoni']
+team_aus = ['finch', 'warner', 'smith', 'starc', ]
+>>>
+show_player_info(team_india)
+Team India
+    rohit
+    rahul
+    kohli
+    pant
+    dhoni
+
+show_player_info(team_aus, 'australia')
+Team Australia
+    finch
+    warner
+    smith
+    starc
+
+6. Write a function calculate_total_score that takes in a dictionary as below and returns the total 
+   score of a team 
+
+scores_dict = {
+    'rahul': 0,
+    'rohit': 102,
+    'kohli': 72,
+    'pant': 32,
+    'dhoni': 23,
+    'pandya': 45
+}
+
+Solution:
+
+def calculate_total_score(score_dict):
+    total_score = 0
+    for name, score in score_dict.items():
+        total_score += score # equivalent to total_score = total_score + score
+    return total_score
+
+
+>>> calculate_total_score(scores_dict)
+274
+>>>
+
+7. Write a function get_minimum_age that takes variable number of ages as argument and returns the lowest age. 
+   Hint: get_minimum_age(*ages) the built-in function "min(iterable)" returns the lowest value in the iterable 
+
+Solution:
+
+def get_minimum_age(*ages):
+    return min(ages)        # note: * symbol is not required to be used while traversing inside the function 
+
+>>> get_minimum_age(10, 20, 6, 6, 6, 6,7, 26, 7, 7, 47, 2)
+2
+>>>
+
+8. Create a custom Exception with name UnauthorizedUserException
+
+class UnauthorizedUserException(Exception): 
+    pass
+>>>
+
+9. Write a function authorize_user that takes
+    a. 1 mandatory string argument          : username
+    b. variable number of string arguments  : *passwords
+
+    Print "Login successful for user: <username>" if any of the argument in passwords is 'secret'.
+    If no password contains word 'secret' raise UnauthorizedUserException with message "<username> is unauthorized to login"
+
+  def authorize_user(username, *passwords):
+      for password in passwords:
+          if password == 'secret':
+              print("Login successful for user: " + username)
+              break
+      else:
+          raise UnauthorizedUserException('{} is unauthorized to login'.format(username))
+  
+  >>>
+  >>>
+  authorize_user('John', 'secret')
+  Login successful for user: John
+  >>>
+  authorize_user('John', 'guessmenow')
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    File "<stdin>", line 7, in authorize_user
+  __main__.UnauthorizedUserException: John is unauthorized to login
+  >>>
+
+10. Write a function print_access(credentials_list)
+
+    where, 
+
+    credentials_list = [
+      ('John', 'secret', 'guess', 'whoami'), 
+      ('Rob', 'guess', 'whoami'), 
+      ('Ha Nguyen', 'secret', 'pass123', 'test123'), 
+    ]
+
+    Steps:
+    1. Inside the print_access function call the above authorize_user() function within try-except block 
+       in order to handle the exception part of code 
+
+    2. if UnauthorizedUserException exception is thrown print - "<username> cannot be logged in: <reason>"
+
+    3. else - print "<username> can now access the internet" 
+
+    4. finally - print message 'processed user <username>' 
+
+    
+Solution:
+
+def print_access(credentials):
+    for credential in credentials:
+        try:
+            authorize_user(credential)    # authorize_user(  ('John', 'secret', 'guess', 'whoami')  )
+        except UnauthorizedUserException as e:
+            print("{} cannot be logged in: {}".format(credential[0], e) )   # credential[0] is 'John'
+        else:
+            # code that runs if exception is not thrown
+            print("{} can now access the internet" .format(credential[0]))
+        finally:
+            print('processed user ' + credential[0])
+>>>
+print_access(credentials_list)
+John can now access the internet
+processed user John
+Rob cannot be logged in
+processed user Rob
+Ha Nguyen can now access the internet
+processed user Ha
+>>>
+
+
+11. Write a function with show_fb_wall(fb_username, *friend_requests, **notifications)
+
+    a. one mandatory argument : fb_username
+    b. variable str arguments : friend_requests
+    c. variable keyword args  : notifications
+
+    The function when called with input data given, should present the user with
+    information in below format.
+
+
+Caller:
+
+1. show_fb_wall(
+    'Bob',                                          # Mandatory arg
+    'John', 'David', 'Graham', 'Garry', 'Thomas',   # Variable args
+    michael='posted a new image',                   # Keyword args
+    rob='invited you to play candy crush!',         # ...
+    brian='added a life event!',                    # ...
+)
+
+
+Output format:
+
+    Welcome Bob!    
+    You have "5" friend requests from:
+        - John
+        - David 
+        - Graham 
+        - Garry 
+        - Thomas 
+    You have "3" new notifications:
+        - "Brian" has added a life event!
+        - "Michael" has posted a new image
+        - "Rob" has invited you to play candy crush!
+
+
+def show_fb_wall(fb_username, *friend_requests, **notifications):
+    print('Welcome {}!'.format(fb_username))
+
+    # Print friend requests 
+    print('You have "{}" friend requests from:'.format(num_frnd_req)) # text to be printed before printing friend requests
+    for requestor in friend_requests:
+        print('    - ' + requestor)     # requestor name preceded by four spaces and a hyphen '    - '
+
+    # Print notifications 
+    for poster, message in notifications.items():
+        poster = poster.capitalize()    # capitalize poster's name 
+        print('{} has {}'.format(poster, message))     
+
+Try:
+  2. show_fb_wall('Swad', 'Vivek', 'Raja')
+  3. show_fb_wall()
