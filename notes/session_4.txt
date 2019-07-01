@@ -182,3 +182,39 @@ c. functions with mandatory arguments, *args, **kwargs
             # perform all clean-ups here
 
     e. Custom Exceptions
+
+
+Command line:
+
+>>> for f in dir('__builtins__'):
+    ...     print(f)
+    ...
+    __add__
+    __class__
+    __contains__
+    __delattr__
+    __dir__
+    __doc__
+    __eq__
+    __format__
+    __ge__
+    __getattribute__
+    __getitem__
+    __getnewargs__
+    __gt__
+    __hash__
+    __init__
+    >>> 'a'.isalpha()
+    True
+    >>> 'a1'.isalpha()
+    False
+    >>> 'a1'.isalnum()
+    True
+    >>> '5'.isalnum()
+    True
+    >>> 'j'.isalnum()
+    True
+    >>> 'j'.isdigit()
+    False
+    >>> '5'.isdigit()
+    True
