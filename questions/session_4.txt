@@ -1,147 +1,115 @@
-1. What Is The Output Of The Following Code Snippet?
+1. Write a basic python function "greet_msg" with 1 argument. This function should:
+    a. contain a docstring with description "Prints any given string"
+    b. print the greeting message in format: Hello, Good <greeting message
 
-num = 1
+Note: Pass by Value - For immutable objects such as the strings, integers and tuples
+Note: Pass by Reference - For all mutable args (list, dict)
 
-def func():
-    global num
-    num = num + 3
-    print(num)
+2. Write a function modify_list that takes in a list as argument and appends a new item to the list.
+   The original list passed to the function as argument must be changed outside the function.
 
-func()
-print(num)
+3. Write a function that takes in any list and prints it's contents in same line separated
+   by a single space. Hint: print function's end parameter must be a single space 
+
+4. Write a function 'square_root' that takes a single argument and returns the square root of the 
+   number passed in. 
+   Hint: - Square root of a number is number with power 0.5 Example: 4^0.5 = 2.
+         - Use "return" keyword to return the calculated value 
+
+5. Write a function show_player_info that takes two arguments. Calling this method 
+   should display the player details in below format. 
+
+    a. list_of_players: list data type 
+    b. country:         default argument with default value 'India'
+
+    Output Format:
+      Sample data: ['rohit', 'rahul', 'kohli', 'pant', 'dhoni']
+
+      Team India
+          rohit
+          rahul
+          kohli
+          pant
+          dhoni
+
+6. Write a function calculate_total_score that takes in a dictionary as below and returns the total 
+   score of a team 
+
+scores_dict = {
+    'rahul': 0,
+    'rohit': 102,
+    'kohli': 72,
+    'pant': 32,
+    'dhoni': 23,
+    'pandya': 45
+}
+
+Solution:
+
+7. Write a function get_minimum_age that takes variable number of ages as argument and returns the lowest age. 
+   Hint: get_minimum_age(*ages) the built-in function "min(iterable)" returns the lowest value in the iterable 
+
+8. Create a custom Exception with name UnauthorizedUserException
+
+9. Write a function authorize_user that takes
+    a. 1 mandatory string argument          : username
+    b. variable number of string arguments  : *passwords
+
+    Print "Login successful for user: <username>" if any of the argument in passwords is 'secret'.
+    If no password contains word 'secret' raise UnauthorizedUserException with message "<username> is unauthorized to login"
 
 
-2. What Is The Output Of The Following Code Snippet?
-    raise_to_power = lambda num, power: num ** power
+10. Write a function print_access(credentials_list)
+
+    where, 
+
+      credentials_list = [
+        ('John', 'secret', 'guess', 'whoami'), 
+        ('Rob', 'guess', 'whoami'), 
+        ('Ha Nguyen', 'secret', 'pass123', 'test123'), 
+      ]
+
+    Steps:
+    1. Inside the print_access function call the above authorize_user() function within try-except block 
+       in order to handle the exception part of code 
+
+    2. if UnauthorizedUserException exception is thrown print - "<username> cannot be logged in: <reason>"
+
+    3. else - print "<username> can now access the internet" 
+
+    4. finally - print message 'processed user <username>' 
 
 
-3. What Is The Output Of The Following Code Snippet?
+11. Write a function with show_fb_wall(fb_username, *friend_requests, **notifications)
 
-myList = [
-    lambda x: x ** 2,
-    lambda x: x ** 3,
-    lambda x: x ** 4
-]
+    a. one mandatory argument : fb_username
+    b. variable str arguments : friend_requests
+    c. variable keyword args  : notifications
 
-for f in myList:
-   print(f(3))
-
-The default value is evaluated only once. This makes a difference when the default is a mutable object such as a list, dictionary, or instances of most classes. For example, the following function accumulates the arguments passed to it on subsequent calls:
+    The function when called with input data given, should present the user with
+    information in below format.
 
 
-def f(a, L=[]):
-    L.append(a)
-    return L
+Caller:
 
+1. show_fb_wall(
+    'Bob',                                          # Mandatory arg
+    'John', 'David', 'Graham', 'Garry', 'Thomas',   # Variable args
+    michael='posted a new image',                   # Keyword args
+    rob='invited you to play candy crush!',         # ...
+    brian='added a life event!',                    # ...
+)
 
-print(f(1))
-print(f(2))
-print(f(3))
-
-
-def f(a, L=[]):
-    L.append(a)
-    return L
-
-
-def f(a, L=None):
-    if L is None:
-        L = []
-    L.append(a)
-    return L
-
-
-
-    >>> for f in dir('__builtins__'):
-    ...     print(f)
-    ...
-    __add__
-    __class__
-    __contains__
-    __delattr__
-    __dir__
-    __doc__
-    __eq__
-    __format__
-    __ge__
-    __getattribute__
-    __getitem__
-    __getnewargs__
-    __gt__
-    __hash__
-    __init__
-    __iter__
-    __le__
-    __len__
-    __lt__
-    __mod__
-    __mul__
-    __ne__
-    __new__
-    __reduce__
-    __reduce_ex__
-    __repr__
-    __rmod__
-    __rmul__
-    __setattr__
-    __sizeof__
-    __str__
-    __subclasshook__
-    capitalize
-    casefold
-    center
-    count
-    encode
-    endswith
-    expandtabs
-    find
-    format
-    format_map
-    index
-    isalnum
-    isalpha
-    isdecimal
-    isdigit
-    isidentifier
-    islower
-    isnumeric
-    isprintable
-    isspace
-    istitle
-    isupper
-    join
-    ljust
-    lower
-    lstrip
-    maketrans
-    partition
-    replace
-    rfind
-    rindex
-    rjust
-    rpartition
-    rsplit
-    rstrip
-    split
-    splitlines
-    startswith
-    strip
-    swapcase
-    title
-    translate
-    upper
-    zfill
-    >>> 'a'.isalpha()
-    True
-    >>> 'a1'.isalpha()
-    False
-    >>> 'a1'.isalnum()
-    True
-    >>> '5'.isalnum()
-    True
-    >>> 'j'.isalnum()
-    True
-    >>> 'j'.isdigit()
-    False
-    >>> '5'.isdigit()
-    True
+Output format:
+    Welcome Bob!    
+    You have "5" friend requests from:
+        - John
+        - David 
+        - Graham 
+        - Garry 
+        - Thomas 
+    You have "3" new notifications:
+        - "Brian" has added a life event!
+        - "Michael" has posted a new image
+        - "Rob" has invited you to play candy crush!
+        
