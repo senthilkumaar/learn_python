@@ -242,18 +242,22 @@ Output format:
         - "Rob" has invited you to play candy crush!
 
 
-def show_fb_wall(fb_username, *friend_requests, **notifications):
-    print('Welcome {}!'.format(fb_username))
+    def show_fb_wall(fb_username, *friend_requests, **notifications):
+        print('Welcome {}!'.format(fb_username))
 
-    # Print friend requests 
-    print('You have "{}" friend requests from:'.format(num_frnd_req)) # text to be printed before printing friend requests
-    for requestor in friend_requests:
-        print('    - ' + requestor)     # requestor name preceded by four spaces and a hyphen '    - '
+        # Print friend requests
+        total_requests = len(friend_requests)
+        print('You have "{}" friend requests from:'.format(total_requests))  # text to be printed before printing friend requests
+        for request in friend_requests:
+            print('    - ' + request)  # requestor name preceded by four spaces and a hyphen '    - '
 
-    # Print notifications 
-    for poster, message in notifications.items():
-        poster = poster.capitalize()    # capitalize poster's name 
-        print('{} has {}'.format(poster, message))     
+        total_notifs = len(notifications)
+        print('You have "{}" new notifications'.format(total_notifs))
+
+        # Print notifications
+        for poster, message in notifications.items():
+            poster = poster.capitalize()
+            print('{} has {}'.format(poster, message))
 
 Try:
   2. show_fb_wall('Swad', 'Vivek', 'Raja')
