@@ -34,22 +34,22 @@ Session 4:
 Session 5
   Lambda functions
   Comprehensions
+  Generators
 
 Session 6:
-  1. Generators
-  2. File handling
+  File handling
     - Create, Read and write file
 
-Session 7:
-  1. Classes and objects
+  Classes and objects
     - instance variables
+    - class variables
     - classmethod, staticmethod and instance methods
     - inheritance
 
 Remaining Sessions:
   - UI Automation using Selenium Webdriver
 
-Last Sessions:
+
   - common built-in functions
   - collections
   - database handling
