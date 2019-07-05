@@ -1,0 +1,7 @@
+
+  1. Generators
+    a. definition
+    b. generator expression
+
+  2. File operations
+  

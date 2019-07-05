@@ -1,17 +1,104 @@
 Summary:
-  1. Lambda Functions
+  1. Comprehensions
+    a. List Comprehensions
+    b. Dictionary Comprehensions
+    c. Set comprehension
+
+  2. Lambda Functions
       a. Callback Functions
       b. lambda function definition
       c. Sorting dictionary by value
 
-  2. Generators
-``
-  3. Comprehensions
-        a. List Comprehensions
-        b. Dictionary Comprehensions
-        c. Generator expression
 
-1. Lambda functions
+Comprehensions in Python provide us with a short and concise way to construct new sequences (such as lists, set, dictionary etc.) using sequences which have been already defined. Python supports the following 4 types of comprehensions:
+    List Comprehensions
+    Dictionary Comprehensions
+    Set Comprehensions
+
+List comprehension
+
+Usual way:
+    new_list = []
+    for i in old_list:
+        new_list.append(expressions(i))
+
+Comprehension way:
+
+    new_list = [expression for item in list]
+    output_list = [output_exp for var in input_list if (var satisfies this condition)]
+
+# simple example
+x = [i for i in range(10)]
+
+# Comprehension to create even squares
+new_range  = [i * i for i in range(5) if i % 2 == 0]
+
+
+# Write a list comprehension to return a list of strings printed two times each
+alphabets = ['a', 'b', 'c']
+s_twice = [2 * alphabet for alphabet in alphabets]
+print(s_twice)
+['aa', 'bb', 'cc']
+
+# List comprehension with conditionals
+
+      Syntax:
+          new_list = [expression for item in list if condition]
+
+# Write a list comprehension to create a list of lower case words from a list
+list_of_str = ['This', 'is', 'A', 'List', 'OF', 'STrings', 1000]
+list_of_lower_str = [word.lower() for word in list_of_str ]  # error
+list_of_lower_str = [ word.lower() for word in list_of_str if type(word) is str]
+
+
+Dictionary comprehensions
+    - Constructing a dictionary using comprehension is similar to list comprehension
+    - Syntax:
+        {key:value for i in list}
+        output_dict = {key:value for (key, value) in iterable if (key, value satisfy this condition)}
+
+# dict comprehension to create dict with numbers as values
+{str(i):i for i in [1,2,3,4,5]}
+{'1': 1, '3': 3, '2': 2, '5': 5, '4': 4}
+
+# dict comprehension to create dict with number of times a word appears in a list
+# Usual way:
+
+cmd_history = ['ps -ef', 'subprocess', 'fork', 'fork', 'mkdir', 'ps -ef']  # input list
+cmd_count = {}  # result dictionary
+for cmd in cmd_history:
+    cmd_count[cmd] = cmd_history.count(cmd)   # create key with cmd and value with count
+# end for
+print(cmd_count)
+
+Comprehension:
+
+{cmd: cmd_history.count(cmd) for cmd in cmd_history}
+
+
+# Set comprehension
+input_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 7]
+output_set = set()
+
+# Using loop for constructing output set
+for var in input_list:
+    if var % 2 == 0:
+        output_set.add(var)
+
+
+print("Output Set using for loop:", output_set)
+
+
+# Comprehension way
+input_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 7]
+
+set_using_comp = {var for var in input_list if var % 2 == 0}
+
+print("Output Set using set comprehensions:", set_using_comp)
+
+
+
+2. Lambda functions
 
 Questions:
     Why are functions first class objects?
@@ -61,18 +148,16 @@ Lambda Expressions
    Syntax:
        <function name> = lambda x [,y] [,z]: <expression>                # note: there is no return keyword
 
-adder = lambda a : a + 10   # one argument
-print(adder(5))
+add_ten = lambda a : a + 10   # one argument
+print(add_ten(5))
 
 mail_id = lambda f_name, l_name, c_name: '{}.{}@{}.com'.format(f_name, l_name, c_name)
 print(mail_id('john', 'doe', 'company'))
-print(mail_id('swadhikar', 'c', 'cisco'))
 
 
 # Simple examples
 average = lambda l: sum(l) / len(l) # calculate average of numbers in a list
 average([10, 10, 10, 10])
-average([1, 2, 3, 4])
 
 
 # Sort dictionary by value
