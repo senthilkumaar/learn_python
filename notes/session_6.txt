@@ -1,7 +1,147 @@
-
+Summary:
   1. Generators
-    a. definition
-    b. generator expression
+     a. Difference between Iteration and iterables
 
-  2. File operations
+        Iteration:
+              - Iteration is the repetition of some kind of process over and over again 
+              - Example: iteration over a list in a "for" loop 
+
+
+#code           
+ez_string = "Generators"
+for s in ez_string:
+    print(s)
+    
+
+        Iterable:
+          - Any object that is iterated over is called iterable
+          - Example:
+              - list
+              - str 
+              - dict 
+              - set 
+
+
+      b. What are generators?
+
+Questions:
+
+1 - How to create a generator in Python?
+2 - Differences between Generator function and a Normal function
+3 - When is StopIteration error thrown?
+4 - Create a generator function to compute the power of 2 for the given numbers 
+ 
+          - Generators are iterables like list or tuple but generated one at a time 
+          - It generates values one at a time from a given sequence
+          - Since they load only one item at a time, they are highly memory efficient 
+          - You can use the generated values using a for loop or with next function
+          - It is a function usually created using a for (or while) loop 
+          
+          Syntax: 
+
+            1. Simple example 
+                def <generator name>():
+                    yield <variable>
+
+def alpha_generator():
+    yield 'a'
+
+>>> alpha = alpha_generator()
+>>> next(alpha)
+'a'
+>>>
+>>>
+>>> next(alpha)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+      
+
+            2. Functional example without loops 
+
+def gen_printer():
+    n = 1
+    print('This is printed first')
+    yield n   # returns the value and the state is stored
+    
+    n += 1
+    print('This is printed second')
+    yield n   # returns the value and the state is stored
+
+    n += 1
+    print('This is printed at last')
+    yield n   # returns the value and the state is stored
+
+
+>>> printer = gen_printer()
+>>>
+>>> next(printer)
+This is printed first
+1
+>>> next(printer)
+This is printed second
+2
+>>> next(printer)
+This is printed at last
+3
+>>> next(printer)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration              
+                    
+            3. Functional example with loops
+                def <generator name>():
+                    for item in sequence:
+                      yield <item>        # state of the item is store between subsequent calls 
+                
+Example:
+
+# create a generator that returns square of given numbers 
+
+def square_generator(max_limit, start=0):
+    for number in range(start, max_limit + 1):
+        yield number ** 2
+
+>>>
+>>> sq = square_generator(10)
+>>> for s in sq:
+...     print(s)
+
+
+
+# create a generator that returns line by line from a large scattered text if 
+
+def generate_lines():
+    text = """ACP Milind Khetle said Sam called his wife in Sydney, Australia, and
+----------
+told her he was going to end his life. His wife immediately informed the British 
+==========
+deputy high commission in Mumbai. Officials from the foreign mission informed the police control room
+19999999999991232
+A team led by ACP Khetle immediately swung into action and reached the address in Hiranandani Gardens
+**************
+around 10 am"""
+    for line in text.split('\n'):
+        if '-' in line or '==' in line or line.isdigit() or '*' in line:
+            continue
+        yield line 
+
+>>>
+>>> gen = generate_lines()
+>>>
+>>> for l in gen:
+...     print(l)
+
+
+
+Memory efficient
+
+A normal function to return a sequence will create the entire sequence in memory before returning the result. This is an overkill if the number of items in the sequence is very large.
+
+Generator implementation of such sequence is memory friendly and is preferred since it only produces one item at a time.
+
+
+
+        
+
   
