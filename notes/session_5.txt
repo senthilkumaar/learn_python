@@ -1,6 +1,9 @@
 Summary:
   1. Comprehensions
     a. List Comprehensions
+          1. Simple list comprehension
+          2. List comprehension with conditionals
+          3. Further examples
     b. Dictionary Comprehensions
     c. Set comprehension
 
@@ -18,13 +21,19 @@ been already defined
     Dictionary Comprehensions
     Set Comprehensions
 
-List comprehension
+  1.a. List Comprehensions
+
+    1.a.1. Simple list comprehension
+
+    Syntax:
+        result_list = [ <expression> for var in iterable ]
 
 Usual way:
     new_list = []
     for i in sequence:
         new_list.append(expressions(i))   # 3 * i
 
+<<<<<<< HEAD
 Comprehension way:
     new_list = [expression for item in iterable]
 
@@ -34,13 +43,29 @@ x = [i for i in range(10)]
 
 # Example: Comprehension to create even squares
 new_range  = [i * i for i in range(5) if i % 2 == 0]
+=======
 
+# simple example
+x = [i for i in range(10)]
 
-# List comprehension with conditionals
+    1.a.2. List comprehension with conditionals
+>>>>>>> eee462c80861a325f440308edbf0bc85e7f5ab9e
+
       Syntax:
-          new_list = [expression for item in iterable if condition]
+          result_list = [ <expression> for var in iterable if condition ]
 
-# Write a list comprehension to create a list of lower case words from a list
+# Comprehension to create even squares
+square_of_even_nos  = [i * i for i in range(5) if i % 2 == 0]
+
+    3. Further examples
+
+# 1. Write a list comprehension to return a list of strings printed two times each
+alphabets = ['a', 'b', 'c']
+s_twice = [2 * alphabet for alphabet in alphabets]
+print(s_twice)
+['aa', 'bb', 'cc']
+
+# 2. Write a list comprehension to create a list of lower case words from a list
 list_of_str = ['This', 'is', 'A', 'List', 'OF', 'STrings', 1000]
 list_of_lower_str = [word.lower() for word in list_of_str ]  # error
 list_of_lower_str = [ word.lower() for word in list_of_str if type(word) is str]
@@ -64,6 +89,9 @@ Dictionary comprehensions
 # Write a dict comprehension to create dict with number of times a word appears in a list
 # Usual way:
 
+# 1. Dict comprehension to create dict with number of times a word appears in a list
+
+# Usual way:
 cmd_history = ['ps -ef', 'subprocess', 'fork', 'fork', 'mkdir', 'ps -ef']  # input list
 cmd_count = {}  # result dictionary
 for cmd in cmd_history:
@@ -84,13 +112,10 @@ for var in input_list:
   if var % 2 == 0:
     output_set.add(var)
 
-
 print("Output Set using for loop:", output_set)
 
 
 # Comprehension way
-input_list = [1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 7]
-
 set_using_comp = {var for var in input_list if var % 2 == 0}
 set_using_comp = {var for var in input_list if var % 2}   # set of odds
 
