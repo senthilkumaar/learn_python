@@ -1,7 +1,89 @@
 
-  1. Generators
+  1. Lambda function:
+
+  2. Generators
     a. definition
     b. generator expression
 
-  2. File operations
-  
+  3. File operations
+
+  2. Lambda functions
+
+  Questions:
+      Why are functions first class objects?
+      Write a lambda function that doubles and returns any number (data-type) passed to it
+      How will you sort a dictionary by its value in reverse order? (and return as list of tuples)
+
+
+  # Callback functions
+  def add(n1, n2):
+      return n1 + n2
+
+  add(1, 2)
+
+  def mul(n1, n2):
+      return n1 * n2
+
+  def calculator(num1, num2, function):
+      result = function(num1, num2)     # third arg function is called with first two args
+      print(result)
+
+  def first_item(sequence):
+      return sequence[0]
+
+  def second_item(sequence):
+      return sequence[1]
+
+  d = {'messages': 1, 'requests': 2, 'notifs': 3}
+
+  def print_dict_item(dictionary, func=first_item):
+      """ Prints the keys of each dictionary key-value pair"""
+      dict_items = dictionary.items()    # key-value pair as List of tuples form
+
+      for key_value_tuple in dict_items:
+          key = func(key_value_tuple)
+          print(key)
+
+
+  print_dict_item(d, func=second_item)
+  print_dict_item(d, func=second_item)
+
+
+  # Lambda functions
+  Lambda Expressions
+     - Lambda functions can be used wherever function objects are required
+     - They are restricted to a single expression
+
+     Syntax:
+         <function name> = lambda x [,y] [,z]: <expression>                # note: there is no return keyword
+
+  add_ten = lambda a : a + 10   # one argument
+  print(add_ten(5))
+
+  mail_id = lambda f_name, l_name, c_name: '{}.{}@{}.com'.format(f_name, l_name, c_name)
+  print(mail_id('john', 'doe', 'company'))
+
+
+  # Simple examples
+  average = lambda l: sum(l) / len(l) # calculate average of numbers in a list
+  average([10, 10, 10, 10])
+
+
+  # Sort dictionary by value
+  people_count_dict = {
+      'hcl': 1000,
+      'tcs': 1200,
+      'cts': 650,
+      'wipro': 700
+  }
+
+  # Normal sorting
+  sorted(people_count_dict)   # sorts company names in alphabetical order
+
+  # To sort by values
+  # 1. Use sorted() function on dict.items() -> list of tuples [(a, b), (c, d), ...]
+  # 2. Pass the keyword argument 'key' as the lambda function.
+       lambda x: x[1]
+
+  sorted(people_count_dict.items(), key=lambda x: x[1])
+  sorted(people_count_dict.items(), key=lambda x: x[1], reverse=True)

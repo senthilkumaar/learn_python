@@ -3,6 +3,7 @@ Session 1:
     2. String Operations
     3. Mutability
 
+
 Session 2:
   1. if - else
      if - elif - else (nested if else)
@@ -12,12 +13,14 @@ Session 2:
       B. List
       C. Tuple
 
+
 Session 3:
   1. Dictionary
     - Create, item existence
     - Create from list or tuple
     - Update, Delete, Sort andtraversal
     - Commonly used dictionary methods
+
 
 Session 4:
   1. Functions
@@ -31,25 +34,34 @@ Session 4:
     - try, except and finally
     - Defining custom exception
 
+
 Session 5
-  Lambda functions
-  Comprehensions
-  Generators
+  1. Comprehensions
+    - List Comprehensions
+    - Dictionary Comprehensions
+    - Set comprehension
+
 
 Session 6:
-  File handling
-    - Create, Read and write file
+  1. Lambda functions
+  2. Generators
+  3. File handling
+      - Create, Read and write file
 
+
+Session 7:
   Classes and objects
     - instance variables
     - class variables
     - classmethod, staticmethod and instance methods
     - inheritance
 
+
 Remaining Sessions:
   - UI Automation using Selenium Webdriver
 
 
+Session 8:
   - common built-in functions
   - collections
   - database handling
