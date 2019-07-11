@@ -1,0 +1,28 @@
+
+Virtusa interview questions:
+
+1. What are the datatypes that Python supports? 
+
+2. When will we use *args and **kwargs?
+
+3. What are the two ways to open file?
+
+4. Name some of the modules you have used in python?
+
+5. What is the purpose of __init__.py file?
+
+6. What is the difference between a list and a tuple?
+
+7. What is "super" keyword in python?
+
+8. What is the difference between str.split(), str.replace()
+
+9. Difference between list.append() and list.extend()
+
+10. How will you remove the last element of a list?
+
+11. What is a set? Does it support indexing?
+
+12. Can we create an empty tuple?
+
+13. What is the use of pass keyword?
