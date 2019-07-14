@@ -17,11 +17,6 @@ Summary:
       d. try-except[-else]-finally
       e. Custom Exceptions
 
-  3. Lambda Functions
-      a. lambda function definition
-      b. Simple example
-      c. Sorting dictionary by value
-
 
 1. Functions
 

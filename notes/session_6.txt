@@ -1,230 +1,79 @@
 
 Summary:
   1. Lambda function:
-      a. callback functions
+    a. callback functions
+    b. lambda function
+    c. sorting a dictionary by value
 
   2. Generators
-    a. definition
-    b. generator expression
-
-  3. File operations
-
+    a. Difference between Iteration and iterables
+    b. What are generators?
+    c. Examples
+      - Simple Example with single yield statement
+      - Functional example without loops
+      - Functional example with loops
 
 1. Lambda functions
-
   Questions:
-      1. Write a lambda function that doubles and returns any number (data-type) passed to it
-      2. How will you sort a dictionary by its value in reverse order? (and return as list of tuples)
+    1. Write a lambda function that doubles and returns any number (data-type) passed to it
+    2. How will you sort a dictionary by its value in reverse order? (and return as list of tuples)
+    3. What is a callback function refer to?
 
+  1.a.  Callback functions
+    - In python, functions can be passed as an argument to another function
+      just like any other variable would be passed
 
-# Callback functions
-def add(n1, n2):
-    return n1 + n2
+    - This property of function makes it a first class object, meaning
+      its a normal object just like string, list etc.
 
-add(1, 2)
-
-def mul(n1, n2):
-    return n1 * n2
-
-def calculator(num1, num2, function):
-    result = function(num1, num2)     # third arg function is called with first two args
-    print(result)
-
-def first_item(sequence):
-    return sequence[0]
-
-def second_item(sequence):
-    return sequence[1]
-
-d = {'messages': 1, 'requests': 2, 'notifs': 3}
-
-def print_dict_item(dictionary, func=first_item):
-    """ Prints the keys of each dictionary key-value pair"""
-    dict_items = dictionary.items()    # key-value pair as List of tuples form
-
-    for key_value_tuple in dict_items:
-        key = func(key_value_tuple)
-        print(key)
-
-
-print_dict_item(d, func=first_item)
-print_dict_item(d, func=second_item)
-
-
-  # Lambda functions
-  Lambda Expressions
+  1.b. Lambda Functions
      - Lambda functions can be used wherever function objects are required
      - They are restricted to a single expression
 
-     Syntax:
-         <function name> = lambda x [,y] [,z]: <expression>                # note: there is no return keyword
+     - Syntax:
+         # lambda function with no arguments
+         func_obj = lambda : <expression>    # note: there is no return keyword
 
-  add_ten = lambda a : a + 10   # one argument
-  print(add_ten(5))
+         # lambda function with three arguments
+         func_obj = lambda x ,y, z: <expression>
 
-  mail_id = lambda f_name, l_name, c_name: '{}.{}@{}.com'.format(f_name, l_name, c_name)
-  print(mail_id('john', 'doe', 'company'))
+  1.c. Sorting dictionaries by value
+      - To sort a dictionary by value, override the sorte() function's
+        'key' parameter to get the second item in a sequence
 
-
-  # Simple examples
-  average = lambda l: sum(l) / len(l) # calculate average of numbers in a list
-  average([10, 10, 10, 10])
-
-
-  # Sort dictionary by value
-  people_count_dict = {
-      'hcl': 1000,
-      'tcs': 1200,
-      'cts': 650,
-      'wipro': 700
-  }
-
-  # Normal sorting
-  sorted(people_count_dict)   # sorts company names in alphabetical order
-
-  # To sort by values
-  # 1. Use sorted() function on dict.items() -> list of tuples [(a, b), (c, d), ...]
-  # 2. Pass the keyword argument 'key' as the lambda function.
-       lambda x: x[1]
-
-  sorted(people_count_dict.items(), key=lambda x: x[1])
-  sorted(people_count_dict.items(), key=lambda x: x[1], reverse=True)
-
+      - Example: sorted(d.items(). key=lambda x: x[1])
 
 2. Generators
-   a. Difference between Iteration and iterables
 
-      Iteration:
-            - Iteration is the repetition of some kind of process over and over again
-            - Example: iteration over a list in a "for" loop
+    Questions:
+      4. How to create a generator in Python?
+      5. Differences between Generator function and a Normal function
+      6. When is StopIteration error thrown?
+      7. Create a generator function to compute the power of 2 for the given numbers
 
-
-# code
-ez_string = "Generators"
-for s in ez_string:
-    print(s)
-
+   2.a Difference between Iteration and iterables
+        Iteration:
+          - Iteration is the repetition of some kind of process over and over again
+          - Example: iteration over a list in a "for" loop
 
         Iterable:
           - Any object that is iterated over is called iterable
           - Example:
-              - list
-              - str
-              - dict
-              - set
+              - list, str, dict, set etc
 
-      b. What are generators?
-
-      c. Write a generator function that returns a list of squares and
-         loop over it
-
-
-Questions:
-
-1 - How to create a generator in Python?
-2 - Differences between Generator function and a Normal function
-3 - When is StopIteration error thrown?
-4 - Create a generator function to compute the power of 2 for the given numbers
-
-      - Generators are iterables like list or tuple but generated one at a time
-      - It generates values one at a time from a given sequence
+    2.b. What are generators?
+      - They are functions that generates values one at a time from a given sequence
+      - A function with a "yield" keyword makes a function as a generator
       - Since they load only one item at a time, they are highly memory efficient
-      - You can use the generated values using a for loop or with next function
-      - It is a function usually created using a for (or while) loop
+      - You can use the generated values using a for loop or with "next" function
+      - It normally contains the "yield" statement within a "for" or "while" loop
 
       Syntax:
+          def <generator name>():
+              for item in <iterable>:
+                yield <expression>
 
-        1. Simple example
-            def <generator name>():
-                yield <variable>
-
-
-def alpha_generator():
-    yield 'a'
-
-
-alpha = alpha_generator()
-next(alpha)
-'a'
-
-next(alpha)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-StopIteration
-
-
-2. Functional example without loops
-
-def gen_printer():
-    n = 1
-    print('This is printed first')
-    yield n   # returns the value and the state is stored
-
-    n += 1
-    print('This is printed second')
-    yield n   # returns the value and the state is stored
-
-    n += 1
-    print('This is printed at last')
-    yield n   # returns the value and the state is stored
-
-
-printer = gen_printer()
-
-next(printer)
-This is printed first
-1
-next(printer)
-This is printed second
-2
-next(printer)
-This is printed at last
-3
-next(printer)
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-StopIteration
-
-3. Functional example with loops
-    def <generator name>():
-        for item in sequence:
-          yield <item>        # state of the item is store between subsequent calls
-
-Example:
-
-# create a generator that returns square of given numbers
-
-def square_generator(max_limit, start=0):
-    for number in range(start, max_limit + 1):
-        yield number ** 2
-
-sq = square_generator(10)
-for s in sq:
-    print(s)
-
-
-# create a generator that returns line by line from a large scattered text if
-
-def generate_lines():
-    text = """ACP Milind Khetle said Sam called his wife in Sydney, Australia, and
-----------
-told her he was going to end his life. His wife immediately informed the British
-==========
-deputy high commission in Mumbai. Officials from the foreign mission informed the police control room
-19999999999991232
-A team led by ACP Khetle immediately swung into action and reached the address in Hiranandani Gardens
-**************
-around 10 am"""
-
-    for line in text.split('\n'):
-        if '-' in line or '==' in line or line.isdigit() or '*' in line:
-            continue
-        yield line
-
-
-gen = generate_lines()
-
-
-for l in gen:
-    print(l)
+    2.c. Examples
+      2.c.1  Simple Example with single yield statement
+      2.c.2  Functional example without loops
+      2.c.3. Functional example with loops
