@@ -1,0 +1,139 @@
+I. Use list comprehension for below 3 questions. 
+   Name the functions yourself. It should be related to the type of functioning it does
+
+    1. Write a function which gets two arguments (min, max) returns even numbers between min and max.
+    
+    2. Write a function which gets a list as argument and returns all words as list whose length 
+       is greater than 5 and starts with 'a' or 'b'
+
+       sample input :
+       input_list = ['amazing', 'excel', 'affluent', 'rest', 'benign', 'best', 'bounty', 'token', 'assault']
+       
+    3. Write a function that accepts two arguments (reference_words, input_words). It should return a list 
+       that checks input_words against reference_words and returns only the words that are matching in both.
+
+
+II. Use dictionary comprehension for below 3 questions. 
+    Please name the functions yourself. It should be related to the type of functioning it does
+
+    4. Write a function that takes an argument max_number and it should return a dictionary in below format.
+
+       For instance, max_number = 5. Then the resulting dictionary should be { '1': 1, '2': 2, '3': 3, '4': 4, '5': 5 }
+       Key as string form of that number and value in integer format 
+
+       Hint: str(1) = '1'
+
+    5. Write a function that takes a list argument and returns a dictionary with keys as elements in the input list 
+       and values as the number of characters in each word. Ignore if an element is not string 
+
+       sample input: 
+        fruits = ['apple', 1, 'mango', 2, 'banana', 3, 'cherry']
+        
+       sample output:
+        {'apple': 5, 'mango': 5, 'banana': 6, 'cherry': 6}
+
+    6. Write a function that takes a list argument and returns a dictionary with keys in the input list 
+       in all lowercase and values in all uppercase. Ignore if an element is not string/
+
+       sample input: 
+        fruits = ['apple', 1, 'mango', 2, 'banana', 3, 'cherry']
+        
+       sample output:
+        {'apple': 'APPLE', 'mango': 'MANGO', 'banana': 'BANANA', 'cherry': 'CHERRY'}
+
+
+III. Use set comprehension for below 1 question
+     Please name the functions yourself. It should be related to the type of functioning it does
+
+    7. Write a function that takes a list of numbers with duplicate values. The function should return a set with squares of each 
+       number only if the number is an integer and ignore all other types (str, float, etc.)
+
+       Sample input:
+          input_list = [1, '1', 'a', '1', 2, '2', 'c', 'd', 3, '3', '4', '4', 4, 5]
+          
+       Sample output:
+          {16, 1, 9, 25, 4}
+
+IV. Write lambda function for the below 3 questions
+
+    8. Write a lambda function with no arguments. When called it should print message: "i'm function or anonymous function"
+       
+    9. Write a lambda function with one argument "n" it should return the square root of the given number 
+
+    10. Write a lambda function with one argument. It should return 3rd item in the given sequence 
+
+V. Sorting dictionary by value:
+
+    11. Write a function "get_sorted_school_strength" that takes one argument which is a dictionary of school name and its strength (sample data below).
+        The function should:
+
+          a. raise ValueError, if the argument passed to the function is not of type 'dict'
+          b. define a lambda function to return second element in the sequence 
+          c. use sorted() function to sort the dictionary by values in ascending order 
+          
+          sample_input:
+            school_db = {'school_a': 500, 'school_b': 300, 'school_c': 700, 'school_d': 250}
+
+          sample output:
+            [('school_d', 250), ('school_b', 300), ('school_a', 500), ('school_c', 700)]
+            
+
+    12. Write a function "get_country_population" that takes one argument which is a dictionary of country name and its population (sample data below).
+        The function should:
+
+          a. raise ValueError, if the argument passed to the function is not of type 'dict'
+          b. define a lambda function to return second element in the sequence 
+          c. use sorted() function to sort the dictionary by values in DESCENDING  order 
+
+          sample_input:
+            population_db = {'India': 12000000, 'New Zealand': 400000, 'China': 180000000, 'America': 800000}
+
+          sample output:
+            [('China', 180000000), ('India', 12000000), ('America', 800000), ('New Zealand', 400000)]
+      
+
+VI. Generator Functions 
+
+    13. Given the below generator function, use next() function to traverse through the generator one by one and observe the 
+        error thrown at after the generator is exhausted
+
+        def square_generator(max_limit=5, start=0):
+            for number in range(start, max_limit + 1):
+                yield number ** 2
+
+
+    14. Conceptual questions:
+          1. What is the use of next() function
+          2. What is the error thrown when generator is exhausted?
+          3. How are generators memory efficient?
+          4. What is the difference between yield and return keyword?
+          5. Do we require StopIteration error to be raised explicitly in generators?
+
+
+    15. Given a list of file paths below as a single string. Write a generator function with no arguments 
+        to return python file paths one at a time.
+
+        Hint: paths to python file ends with ".py". str.endswith(text) returns True when matches
+    
+        paths = """corelib/VM_manage/manage_config.yaml
+            corelib/core/api_util.py
+            corelib/logger/system_log.log
+            corelib/python_packages_install/
+            corelib/schema/plan.py
+            corelib/selenium/core/api.py
+            corelib/service_handler/requirements.txt
+            corelib/snapshots/snaphsot_getter.py
+            corelib/subzero/loader.py
+            tests/core/testfile.txt
+            tests/configurations/core/wlc.py
+            tests/configurations/ise/core/config_reader.py
+            tests/configurations/ise/ui/core/framework.py
+            tests/configurations/ise/ui/administration/core/empty_container.py
+            tests/configurations/ise/ui/administration/system/core/core_fw.py
+            tests/configurations/ise/ui/administration/system/logging/core/
+            tests/suites/core/suite_configurator.py
+            tests/suites/system_test/core/
+            tests/suites/system_test/dataholder/core/dataholder.py
+            tests/suites/system_test/systestconfiguration/core/
+            tests/suites/system_test/systestvalidation/core/validate.py"""
+
